@@ -2,7 +2,5 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
-        <item>@font/averia_gruesa_libre</item>
-        <item>@font/clicker_script</item>
     </array>
 </resources>
