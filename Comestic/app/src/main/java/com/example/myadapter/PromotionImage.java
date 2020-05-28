@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class ImageAdapter extends PagerAdapter {
+import com.example.comestic.R;
+
+public class PromotionImage extends PagerAdapter {
     Context mContext;
 
-    public ImageAdapter(Context context) {
+    public PromotionImage(Context context) {
         this.mContext = context;
     }
 
@@ -21,7 +23,7 @@ public class ImageAdapter extends PagerAdapter {
     }
 
     private int[] sliderImageId = new int[]{
-            com.example.comestic.R.drawable.image1,
+            com.example.comestic.R.drawable.imagpro1,
             com.example.comestic.R.drawable.image2,
             com.example.comestic.R.drawable.image4,
             com.example.comestic.R.drawable.image3,
