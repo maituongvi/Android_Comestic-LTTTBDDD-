@@ -1,4 +1,4 @@
-package com.example.shoesapp;
+package com.example.comestic;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.shoesapp", appContext.getPackageName());
+        assertEquals("com.example.comestic", appContext.getPackageName());
     }
 }

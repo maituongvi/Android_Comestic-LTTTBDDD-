@@ -1,4 +1,4 @@
-package com.example.shoesapp;
+package com.example.comestic;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -13,6 +13,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
@@ -31,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nv;
     private BottomNavigationView mainNav;
     private FrameLayout mainFrame;
+    private static final String TAG ="Main Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e(TAG,"On Create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         nv = (NavigationView)findViewById(R.id.nv);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -53,11 +59,18 @@ public class MainActivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.trangchu:
-                        Toast.makeText(MainActivity.this, "Trang chủ",Toast.LENGTH_SHORT).show();break;
+
+                        Intent intents = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(intents);
+                        break;
                     case R.id.taikhoan:
-                        Toast.makeText(MainActivity.this, "Tài khoản",Toast.LENGTH_SHORT).show();break;
+                        Log.e(TAG, "ERROR");
+                        Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
+                        startActivity(intent4);
+                        break;
                     case R.id.giohang:
-                        Toast.makeText(MainActivity.this, "Giỏ hàng", Toast.LENGTH_SHORT).show();break;
+                        Intent intent1= new Intent(MainActivity.this,OrderActivity.class);
+                        startActivity(intent1);break;
                     case R.id.dangxuat:
                         Toast.makeText(MainActivity.this, "Đăng xuất", Toast.LENGTH_SHORT).show();break;
                     default:
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainNav = (BottomNavigationView) findViewById(R.id.main_nav);
         mainNav.setOnNavigationItemSelectedListener(navListener);
-        mainNav.clearFocus();
+        //mainNav.clearFocus();
 
     }
 
@@ -101,19 +114,67 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment = null;
+            // Fragment selectedFragment = null;
 
             switch (menuItem.getItemId()){
                 case R.id.nav_home:
+                    Intent intents = new Intent(MainActivity.this,MainActivity.class);
+                    startActivity(intents);
                     break;
                 case R.id.nav_cart:
-                    selectedFragment = new OrderActivity();
+                    Intent intent= new Intent(MainActivity.this,OrderActivity.class);
+                    startActivity(intent);
                     break;
+                case  R.id.nav_search:
+                    Intent intent1 = new Intent(MainActivity.this,SearchActivity.class);
+                    startActivity(intent1);
+                    break;
+                case  R.id.nav_promotion:
+                    Intent intent2 = new Intent(MainActivity.this,PromotionActivity.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.nav_account:
+                    Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
+                    startActivity(intent4);
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, selectedFragment).commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, selectedFragment).commit();
 
             return true;
         }
     };
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.e(TAG,"On Start");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        Log.e(TAG, "On Resume");
+//    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        Intent intents = new Intent(MainActivity.this,MainActivity.class);
+//        startActivity(intents);
+        //setContentView(R.layout.activity_main);
+        mvideoView = (VideoView) findViewById(R.id.videoView);
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.nuochoagooggirl );
+        try {
+            mvideoView.setVideoURI(uri);
+        } catch (NullPointerException techmaster1)
+        {
+            System.out.println("Couldn't load video" + techmaster1);
+        }
+        mvideoView.start();
+
+    }
+
+
 
 }

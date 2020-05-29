@@ -1,4 +1,4 @@
-package com.example.shoesapp;
+package com.example.comestic;
 
 import org.junit.Test;
 
