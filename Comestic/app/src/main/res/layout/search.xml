@@ -1,22 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchActivity">
-    <br.com.mauker.materialsearchview.MaterialSearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    android:layout_height="wrap_content"
+    tools:context=".SearchActivity"
+    android:orientation="vertical">
+<!--    <br.com.mauker.materialsearchview.MaterialSearchView-->
+<!--        android:id="@+id/search_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/backround1"
-        android:text="@string/search"
-        android:textSize="50sp" />
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarSearch"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            android:gravity="top">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/abc_vector_test"
+                    >
+
+                </Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorSearch"
 
 
-</FrameLayout>
+                    >
+
+                    <EditText
+                        android:id="@+id/editSearch"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:hint="Search"
+                        />
+
+                    <Button
+                        android:id="@+id/btnDeleteSearch"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:drawable/ic_menu_close_clear_cancel">
+
+                    </Button>
+
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnSearch"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_search_black_24dp">
+
+                </Button>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        >
+
+        <ListView
+            android:id="@+id/listSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedScrolling">
+        </ListView>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="bottom"
+        android:translationY="7dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/search_nav"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            app:itemBackground="@color/colorPrimaryDark"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/nav_items"
+            app:itemTextColor="@color/nav_items"
+            app:menu="@menu/navbottom_items"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

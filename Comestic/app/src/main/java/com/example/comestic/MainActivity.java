@@ -17,8 +17,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -35,54 +38,67 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mainNav;
     private FrameLayout mainFrame;
     private static final String TAG ="Main Activity";
+    private Button btnMakeUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e(TAG,"On Create");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//
+//        dl = (DrawerLayout)findViewById(R.id.activity_main);
+//        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
+//
+//        dl.addDrawerListener(t);
+//        t.syncState();
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
 
-        dl = (DrawerLayout)findViewById(R.id.activity_main);
-        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
 
-        dl.addDrawerListener(t);
-        t.syncState();
+//        nv = (NavigationView)findViewById(R.id.nv);
+//        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                int id = item.getItemId();
+//                switch(id)
+//                {
+//                    case R.id.trangchu:
+//
+//                        Intent intents = new Intent(MainActivity.this,MainActivity.class);
+//                        startActivity(intents);
+//                        break;
+//                    case R.id.taikhoan:
+//                        Log.e(TAG, "ERROR");
+//                        Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
+//                        startActivity(intent4);
+//                        break;
+//                    case R.id.giohang:
+//                        Intent intent1= new Intent(MainActivity.this,OrderActivity.class);
+//                        startActivity(intent1);break;
+//                    case R.id.dangxuat:
+//                        Toast.makeText(MainActivity.this, "Đăng xuất", Toast.LENGTH_SHORT).show();break;
+//                    default:
+//                        return true;
+//                }
+//                return true;
+//            }
+//        });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        nv = (NavigationView)findViewById(R.id.nv);
-        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch(id)
-                {
-                    case R.id.trangchu:
-
-                        Intent intents = new Intent(MainActivity.this,MainActivity.class);
-                        startActivity(intents);
-                        break;
-                    case R.id.taikhoan:
-                        Log.e(TAG, "ERROR");
-                        Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
-                        startActivity(intent4);
-                        break;
-                    case R.id.giohang:
-                        Intent intent1= new Intent(MainActivity.this,OrderActivity.class);
-                        startActivity(intent1);break;
-                    case R.id.dangxuat:
-                        Toast.makeText(MainActivity.this, "Đăng xuất", Toast.LENGTH_SHORT).show();break;
-                    default:
-                        return true;
-                }
-                return true;
-            }
-        });
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
         ImageAdapter adapter = new ImageAdapter(this);
         mViewPager.setAdapter(adapter);
+
+        btnMakeUp =(Button) findViewById(R.id.btnMakeUp);
+
+        btnMakeUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this,ComesticsProduct.class);
+                startActivity(intent);
+            }
+        });
 
         //load video
         mvideoView = (VideoView) findViewById(R.id.videoView);
@@ -117,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
             // Fragment selectedFragment = null;
 
             switch (menuItem.getItemId()){
-                case R.id.nav_home:
-                    Intent intents = new Intent(MainActivity.this,MainActivity.class);
-                    startActivity(intents);
-                    break;
+//                case R.id.nav_home:
+//                    Intent intents = new Intent(MainActivity.this,MainActivity.class);
+//                    startActivity(intents);
+//                    break;
                 case R.id.nav_cart:
                     Intent intent= new Intent(MainActivity.this,OrderActivity.class);
                     startActivity(intent);

@@ -178,6 +178,8 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:itemBackground="@color/colorPrimaryDark"
+            app:itemHorizontalTranslationEnabled="true"
+            app:labelVisibilityMode="labeled"
             app:itemIconTint="@color/nav_items"
             app:itemTextColor="@color/nav_items"
             app:menu="@menu/navbottom_items"
