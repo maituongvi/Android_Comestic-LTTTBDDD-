@@ -26,6 +26,7 @@ public class AccountActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
 
+
         accountNav = (BottomNavigationView) findViewById(R.id.account_nav);
         accountNav.setOnNavigationItemSelectedListener(navListener);
         // boolean check = false;

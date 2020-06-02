@@ -13,34 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_frame">
-        <ScrollView
-            android:id="@+id/scrollmainhome"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent"
 
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
             <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
             <RelativeLayout
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@android:color/darker_gray"
+                android:layout_height="wrap_content"
+                android:background="@drawable/backround1"
                 android:orientation="vertical">
 
 
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="220dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="-1dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="1dp" />
+                    android:layout_alignParentEnd="true"/>
 
                 <LinearLayout
                     android:id="@+id/content"
@@ -50,7 +39,8 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/border_edittext"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -63,31 +53,35 @@
                         android:layout_marginBottom="10dp">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/item_make_up"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:background="@drawable/border_edittext"
-                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardBackgroundColor="?attr/colorControlHighlight"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp" />
 
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/border_edittext"
-                            android:foreground="@drawable/iconmake_up"/>
+                        <Button
+                            android:id="@+id/btnMakeUp"
+                            android:layout_width="95dp"
+                            android:layout_height="90dp"
+                            android:background="@drawable/unnamed"
+                            android:foreground="@drawable/iconmakup2" />
+
                         <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_centerHorizontal="true"
-                            app:cardBackgroundColor="@android:color/transparent"
+                            app:cardBackgroundColor="?attr/colorControlHighlight"
                             app:cardCornerRadius="30dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border_edittext"
-                                android:foreground="@drawable/duoc_pham" />
+                            <Button
+                                android:id="@+id/btnHerbal"
+                                android:layout_width="95dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/unnamed"
+                                android:foreground="@drawable/herbalcon" />
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
@@ -98,10 +92,11 @@
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border_edittext"
+                            <Button
+                                android:id="@+id/btnPerfume"
+                                android:layout_width="95dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/unnamed"
                                 android:foreground="@drawable/perfume" />
                         </androidx.cardview.widget.CardView>
 
@@ -114,9 +109,9 @@
                         android:layout_height="wrap_content"
 
                         android:layout_marginLeft="16dp"
-                        android:layout_marginTop="17dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginRight="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="10dp"
                         tools:ignore="UselessParent">
 
                         <androidx.cardview.widget.CardView
@@ -127,10 +122,11 @@
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border_edittext"
+                            <Button
+                                android:id="@+id/btnSkinCare"
+                                android:layout_width="95dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/unnamed"
                                 android:foreground="@drawable/iconskincare" />
                         </androidx.cardview.widget.CardView>
 
@@ -142,11 +138,12 @@
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border_edittext"
-                                android:foreground="@drawable/oil" />
+                            <Button
+                                android:id="@+id/btnOil"
+                                android:layout_width="95dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/unnamed"
+                                android:foreground="@drawable/iconoil" />
 
                         </androidx.cardview.widget.CardView>
 
@@ -159,11 +156,12 @@
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/border_edittext"
-                                android:foreground="@drawable/devide" />
+                            <Button
+                                android:id="@+id/btnComesticDevide"
+                                android:layout_width="95dp"
+                                android:layout_height="90dp"
+                                android:background="@drawable/unnamed"
+                                android:foreground="@drawable/salondevide" />
                         </androidx.cardview.widget.CardView>
 
 
@@ -175,39 +173,32 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="239dp"
                     android:layout_below="@+id/content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="0dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
             </RelativeLayout>
-        </ScrollView>
+
     </FrameLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        android:id="@+id/nv">
-    </com.google.android.material.navigation.NavigationView>
     <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="65dp"
         android:gravity="bottom"
-        android:translationY="7dp">
+        android:translationY="8dp">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_nav"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             app:itemBackground="@color/colorPrimaryDark"
+            app:itemHorizontalTranslationEnabled="true"
+            app:labelVisibilityMode="unlabeled"
             app:itemIconTint="@color/nav_items"
             app:itemTextColor="@color/nav_items"
-            app:menu="@menu/navbottom_items"
-            />
+            app:menu="@menu/navbottom_items" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

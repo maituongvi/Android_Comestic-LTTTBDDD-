@@ -21,8 +21,8 @@ public class ImageAdapter extends PagerAdapter {
     }
 
     private int[] sliderImageId = new int[]{
-            com.example.comestic.R.drawable.image1,
             com.example.comestic.R.drawable.image2,
+            com.example.comestic.R.drawable.image1,
             com.example.comestic.R.drawable.image4,
             com.example.comestic.R.drawable.image3,
     };
