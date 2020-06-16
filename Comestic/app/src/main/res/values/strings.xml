@@ -67,6 +67,7 @@
 <!--        <string name="nav_header_subtitle">android.studio@android.com</string>-->
 <!--        <string name="nav_header_desc">Navigation header</string>-->
 
+<<<<<<< Updated upstream
         <!-- TODO: Remove or change this placeholder text -->
         <string name="hello_blank_fragment">Hello blank fragment</string>
         <string name="signin">Sign In</string>
@@ -89,4 +90,19 @@
         <string name="search">Search</string>
         <string name="Name">NAME</string>
     </resources>
+=======
+    <!-- Chi tiết sản phẩm-->
+    <string name="tensanpham">Comestic</string>
+    <string name="gia">1.000.000</string>
+    <string name="chitietsanpham">Chi tiết sản phẩm</string>
+    <string name="bieudokichco">Size</string>
+    <string name="soluongsp">Số lượng</string>
+    <string name="thongtinsanpham">Comestic\nMang đến cho bạn một làn da mịn màng\n Chống lão hóa\n Trẻ hóa làn da\n Nguyên liệu từ thiên nhiên</string>
+    <string name="size7uk">7 UK</string>
+    <string name="size8uk">8 UK</string>
+    <string name="size9uk">9 UK</string>
+    <string name="size10uk">10 UK</string>
+    <string name="dathang">Thêm vào giỏ hàng</string>
+</resources>
+>>>>>>> Stashed changes
 

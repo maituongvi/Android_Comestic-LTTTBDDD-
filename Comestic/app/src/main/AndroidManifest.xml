@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< Updated upstream
         <activity android:name=".ComesticsProduct"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
@@ -48,12 +49,42 @@
             </intent-filter>
         </activity>
         <activity android:name=".PromotionActivity">
+=======
+        <activity android:name=".GioHangActivity"
+            android:parentActivityName=".MainActivity" >
+
+        </activity>
+        <activity android:name=".ChiTietSanPham"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+        <activity android:name=".StartActivity">
+>>>>>>> Stashed changes
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
+=======
+        <activity android:name=".ProductListActivity"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity android:name=".OrderActivity" />
+        <activity   android:name=".AccountActivity"
+                    android:theme="@style/AppTheme.NoActionBar"
+                    android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".PromotionActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+>>>>>>> Stashed changes
 
         <meta-data
             android:name="preloaded_fonts"

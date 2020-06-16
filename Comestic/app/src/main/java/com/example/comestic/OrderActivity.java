@@ -53,7 +53,7 @@ public class OrderActivity extends AppCompatActivity {
                     break;
 
                 case  R.id.nav_search:
-                    Intent intent2 = new Intent(OrderActivity.this,SearchActivity.class);
+                    Intent intent2 = new Intent(OrderActivity.this,MainActivity.class);
                     startActivity(intent2);
                     break;
                 case  R.id.nav_promotion:

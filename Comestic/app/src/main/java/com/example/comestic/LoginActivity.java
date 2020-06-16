@@ -1,6 +1,7 @@
 package com.example.comestic;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,10 +24,16 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailID, passWord;
     Button btnSignIn;
     TextView tvSignUp;
+
+    public static String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_signin);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         emailID =findViewById(R.id.edittext_username);
         passWord = findViewById(R.id.edittext_password);
@@ -39,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailID.getText().toString();
+                final String email = emailID.getText().toString();
                 String pass = passWord.getText().toString();
 
                 if(email.isEmpty() ){
@@ -64,6 +71,8 @@ public class LoginActivity extends AppCompatActivity {
                             else {
                                 Toast.makeText(LoginActivity.this,"Login Successful!!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                MainActivity.email =email;
+//                                intent.putExtra("email",email);
                                 startActivity(intent);
                             }
                         }
@@ -80,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+
                 startActivity(intent);
             }
         });

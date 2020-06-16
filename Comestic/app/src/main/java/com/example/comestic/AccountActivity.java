@@ -8,18 +8,25 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.model.LoaiSanPham;
+import com.example.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AccountActivity extends Activity {
+public class AccountActivity extends AppCompatActivity {
     EditText txtNewPass;
-    EditText txtNewPass2;
+    EditText txtNewPass2, txtName, txtAddress, txtPhone,txtEmail;
     CheckBox checkBox;
+    User user;
     ImageView img;
-    private BottomNavigationView accountNav;
+    private Toolbar toolbar ;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +34,40 @@ public class AccountActivity extends Activity {
         setContentView(R.layout.account);
 
 
+<<<<<<< Updated upstream
         accountNav = (BottomNavigationView) findViewById(R.id.account_nav);
         accountNav.setOnNavigationItemSelectedListener(navListener);
+=======
+        toolbar =findViewById(R.id.toolBar1);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("ACCOUNT");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+>>>>>>> Stashed changes
         // boolean check = false;
         txtNewPass = (EditText) findViewById(R.id.txtNewPass);
         txtNewPass2 = (EditText) findViewById(R.id.txtNewPass2);
+        txtAddress =findViewById(R.id.txtAddress);
+        txtName = findViewById(R.id.txtName);
+        txtEmail = findViewById(R.id.editEmail);
+        txtPhone =findViewById(R.id.txtPhoneNumber);
         checkBox = findViewById(R.id.checkBox);
+
+        Intent intent = getIntent();
+        if(intent.getExtras() !=null){
+            user = (User) intent.getExtras().getSerializable("user");
+            txtName.setText(user.getTen());
+            txtPhone.setText(user.getSdt());
+            txtEmail.setText(user.getEmail());
+            txtAddress.setText(user.getDiaChi());
+        }
+
+
+
+
 
 
         checkBox.setOnClickListener(new View.OnClickListener() {
@@ -50,38 +85,6 @@ public class AccountActivity extends Activity {
             }
         });
     }
-        private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Fragment selectedFragment = null;
-
-                switch (menuItem.getItemId()){
-                    case R.id.nav_cart:
-                        Intent intent1 = new Intent(AccountActivity.this,OrderActivity.class);
-                        startActivity(intent1);
-                        break;
-                    case R.id.nav_home:
-                        Intent intent = new Intent(AccountActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case  R.id.nav_search:
-                        Intent intent2 = new Intent(AccountActivity.this,SearchActivity.class);
-                        startActivity(intent2);
-                        break;
-//                case  R.id.nav_promotion:
-//                    Intent intent3 = new Intent(OrderActivity.this,SearchActivity.class);
-//                    startActivity(intent3);
-//                    break;
-                    case R.id.nav_account:
-                        Intent intent4 = new Intent(AccountActivity.this,AccountActivity.class);
-                        startActivity(intent4);
-                }
-                //getSupportFragmentManager().beginTransaction().replace(R.id.order_fragment, selectedFragment).commit();
-
-                return true;
-            }
-        };
 
 
 

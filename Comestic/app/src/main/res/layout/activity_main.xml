@@ -8,34 +8,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingConstraints"
+    android:fitsSystemWindows="true"
+
+
+
+
+
     android:shape="rectangle">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_frame">
+<<<<<<< Updated upstream
+=======
+
+
+        <ScrollView
+            android:id="@+id/scrollmainhome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+>>>>>>> Stashed changes
 
             <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
             <RelativeLayout
+
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/backround1"
                 android:orientation="vertical">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E6E6E6"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:navigationIcon="@drawable/menu1" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@+id/toolBar"
+                    android:id="@+id/hinhAnh"
+                    android:background="@drawable/nen"/>
 
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="match_parent"
+<<<<<<< Updated upstream
                     android:layout_height="220dp"
+=======
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/hinhAnh"
+>>>>>>> Stashed changes
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"/>
 
-                <LinearLayout
-                    android:id="@+id/content"
+
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewLoaiSP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_below="@+id/videoView"
+<<<<<<< Updated upstream
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="16dp"
@@ -201,4 +244,68 @@
             app:itemTextColor="@color/nav_items"
             app:menu="@menu/navbottom_items" />
     </RelativeLayout>
+=======
+                    android:background="#000000"/>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/recyclerViewLoaiSP"
+                    >
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="#000000"/>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:text="© 2020 Made By MTV - NTMH"
+                            android:textColor="#090909">
+
+                    </TextView>
+
+                </FrameLayout>
+
+
+            </RelativeLayout>
+        </ScrollView>
+
+
+            />
+    </FrameLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        android:id="@+id/nv">
+    </com.google.android.material.navigation.NavigationView>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:gravity="bottom"-->
+<!--        android:translationY="7dp">-->
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/pro_nav"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="70dp"-->
+<!--            app:itemBackground="@color/colorPrimaryDark"-->
+<!--            app:itemIconTint="@color/nav_items"-->
+<!--            app:itemTextColor="@color/nav_items"-->
+<!--            app:menu="@menu/navbottom_items"-->
+<!--            />-->
+<!--    </RelativeLayout>-->
+>>>>>>> Stashed changes
 </androidx.drawerlayout.widget.DrawerLayout>

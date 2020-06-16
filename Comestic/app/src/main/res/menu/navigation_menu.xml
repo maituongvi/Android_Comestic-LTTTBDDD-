@@ -9,8 +9,16 @@
     <item android:id="@+id/giohang"
         android:icon="@drawable/ic_local_grocery_store_black_24dp"
         android:title="Giỏ hàng"/>
+<<<<<<< Updated upstream
     <item
         android:id="@+id/dangxuat"
+=======
+
+    <item android:id="@+id/khuyenmai"
+        android:icon="@drawable/ic_promotion"
+        android:title="Khuyến mãi"/>
+    <item android:id="@+id/dangxuat"
+>>>>>>> Stashed changes
         android:icon="@drawable/baseline_exit_to_app_black_24dp"
         android:title="Đăng xuất"
         android:visible="false" />

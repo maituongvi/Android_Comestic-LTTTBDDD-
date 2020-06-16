@@ -23,10 +23,10 @@ public class PromotionImage extends PagerAdapter {
     }
 
     private int[] sliderImageId = new int[]{
-            com.example.comestic.R.drawable.imagpro1,
-            com.example.comestic.R.drawable.image2,
-            com.example.comestic.R.drawable.image4,
-            com.example.comestic.R.drawable.image3,
+            R.drawable.sale2,
+            R.drawable.promotion1,
+            R.drawable.promotion2,
+            R.drawable.promotion3,
     };
 
     @Override

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    android:text="@string/main"
-    android:textSize="50sp"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_order"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="MissingConstraints"
-    android:shape="rectangle">
+    android:background="#00FFFFFF"
+    android:shape="rectangle"
+    android:text="@string/main"
+    android:textSize="50sp"
+    tools:ignore="MissingConstraints">
+
     <FrameLayout
+        android:id="@+id/order_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order_frame">
+        android:layout_height="wrap_content">
+
         <ScrollView
             android:id="@+id/scrollmainhome"
             android:layout_width="match_parent"
@@ -24,13 +27,13 @@
             app:layout_constraintTop_toTopOf="parent">
             <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
-            <RelativeLayout
+            <FrameLayout
+
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:background="@android:color/darker_gray"
                 android:orientation="vertical">
-
 
 
                 <androidx.viewpager.widget.ViewPager
@@ -39,20 +42,30 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="0dp"
+                    android:background="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00252424"
+                    android:minHeight="?attr/actionBarSize"
+                    app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            </RelativeLayout>
+
+            </FrameLayout>
         </ScrollView>
     </FrameLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
+<<<<<<< Updated upstream
         android:id="@+id/nv">
     </com.google.android.material.navigation.NavigationView>
     <RelativeLayout
@@ -71,4 +84,22 @@
             app:menu="@menu/navbottom_items"
             />
     </RelativeLayout>
+=======
+        app:menu="@menu/navigation_menu"></com.google.android.material.navigation.NavigationView>
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="70dp"-->
+    <!--        android:gravity="bottom"-->
+    <!--        android:translationY="7dp">-->
+    <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--            android:id="@+id/pro_nav"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="70dp"-->
+    <!--            app:itemBackground="@color/colorPrimaryDark"-->
+    <!--            app:itemIconTint="@color/nav_items"-->
+    <!--            app:itemTextColor="@color/nav_items"-->
+    <!--            app:menu="@menu/navbottom_items"-->
+    <!--            />-->
+    <!--    </RelativeLayout>-->
+>>>>>>> Stashed changes
 </androidx.drawerlayout.widget.DrawerLayout>
