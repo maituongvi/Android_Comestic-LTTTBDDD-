@@ -1,6 +1,9 @@
 package com.example.myadapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.comestic.DonHangActivity;
 import com.example.comestic.GioHangActivity;
 import com.example.comestic.R;
 import com.example.model.SanPham;
@@ -56,6 +60,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 holder.txtGiaSP.setText(String.valueOf(sp.getGia()*soLuong));
 
                 GioHangActivity.listSoLuongSP.add(position,holder.elegantNumberButton.getNumber());
+
                 int tongTien =0;
                 for(int i=0 ; i<context.listSpOrders.size() ;i++){
                     SanPham p = context.listSpOrders.get(i);
@@ -69,22 +74,51 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             }
         });
 
+
+
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GioHangActivity.listSoLuongSP.remove(position);
-                GioHangActivity.listSpOrders.remove(position);
-                notifyItemRemoved(position);
+                final Dialog dialog= new Dialog(context);
+                Button btnCo , btnKhong;
 
-                int tongTien =0;
-                for(int i=0 ; i<context.listSpOrders.size() ;i++){
-                    SanPham p = context.listSpOrders.get(i);
-                    int soLuong1 = Integer.parseInt(context.listSoLuongSP.get(i)); // số lượng của từng sp trong list
-                    tongTien +=soLuong1*p.getGia();
-                }
+                dialog.setContentView(R.layout.dialog_delete);
+                dialog.setCanceledOnTouchOutside(false);
+                btnCo = dialog.findViewById(R.id.btnCo);
+                btnKhong = dialog.findViewById(R.id.btnKhong);
+                btnCo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GioHangActivity.listSoLuongSP.remove(position);
+                        GioHangActivity.listSpOrders.remove(position);
+                        notifyItemRemoved(position);
+
+                        int tongTien =0;
+                        for(int i=0 ; i<context.listSpOrders.size() ;i++){
+                            SanPham p = context.listSpOrders.get(i);
+                            int soLuong1 = Integer.parseInt(context.listSoLuongSP.get(i)); // số lượng của từng sp trong list
+                            tongTien +=soLuong1*p.getGia();
+                        }
 
 
-                context.total.setText(String.valueOf(tongTien));
+                        context.total.setText(String.valueOf(tongTien));
+
+                        dialog.dismiss();
+                    }
+                });
+                btnKhong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+
             }
         });
 

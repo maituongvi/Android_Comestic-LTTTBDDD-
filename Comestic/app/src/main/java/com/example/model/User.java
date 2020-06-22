@@ -22,6 +22,8 @@ public class User implements Serializable {
         this.sdt = sdt;
     }
 
+
+
     public void setMa(String ma) {
         this.ma = ma;
     }

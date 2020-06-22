@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
 public class ChiTietSanPham extends AppCompatActivity {
     ElegantNumberButton soLuongSP;
-    TextView gia, thongtin, tenSp;
+    TextView gia, thongtin, tenSp ,maSP;
     ArrayList<ProductImage> arr;
     SliderAdapter sliderAdapter;
     int id = 0;
@@ -62,6 +62,7 @@ public class ChiTietSanPham extends AppCompatActivity {
 //        Bundle bundle = intent.getExtras();
         if (product != null) {
             String name = product.getTenSP();
+            String masp =String.valueOf(product.getMaSP());
             id = product.getMaSP();
             String descripiton = product.getMoTaSP();
             double price = product.getGia();
@@ -90,7 +91,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                             databaseError.getMessage() , Toast.LENGTH_SHORT).show();
                 }
             });
-            mapping(name, descripiton, price);
+            mapping(name, descripiton, price,masp);
             loadSlider();
         }
 
@@ -136,14 +137,16 @@ public class ChiTietSanPham extends AppCompatActivity {
 
     }
 
-    public void mapping(String name, String des, double pri){
+    public void mapping(String name, String des, double pri,String maSP1){
 
         gia = findViewById(R.id.giaSP);
         tenSp = findViewById(R.id.tensanpham);
         thongtin = findViewById(R.id.thongtin);
+        maSP =findViewById(R.id.gia);
 
         tenSp.setText(name);
         thongtin.setText(des);
+        maSP.setText(maSP1);
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         gia.setText(decimalFormat.format(pri)+" đ");

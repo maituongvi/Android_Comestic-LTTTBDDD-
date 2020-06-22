@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/giohang"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="400px"
+        android:layout_height="300px"
         android:orientation="horizontal">
 
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/imgGioHang"
             android:layout_width="120dp"
-            android:layout_height="match_parent" />
+            android:layout_height="120dp"
+            android:layout_marginLeft="10px"/>
         <LinearLayout
             android:layout_width="233dp"
             android:layout_height="match_parent"
@@ -30,17 +35,18 @@
                 android:textAlignment="center"
                 android:paddingLeft="5px"
                 android:paddingRight="5px"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
             <TextView
                 android:id="@+id/txtGia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textColor="#ff0000"
-                android:paddingBottom="25dp"/>
+                android:paddingBottom="10dp"/>
             <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
 
                 android:layout_width="60dp"
+                app:initialNumber="1"
                 android:layout_height="30dp"
                 android:gravity="center"
                 app:textSize="5dp"
@@ -55,11 +61,12 @@
             >
             <Button
                 android:id="@+id/btnDelete"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@mipmap/delete"
                 android:textSize="50dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:stateListAnimator="@null"/>
         </FrameLayout>
 
 
@@ -71,4 +78,4 @@
 
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

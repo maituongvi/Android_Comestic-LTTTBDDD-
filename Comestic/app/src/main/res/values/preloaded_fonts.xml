@@ -2,11 +2,10 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
-<<<<<<< Updated upstream
-=======
         <item>@font/aguafina_script</item>
+        <item>@font/allura</item>
         <item>@font/boogaloo</item>
         <item>@font/buenard_bold</item>
->>>>>>> Stashed changes
+        <item>@font/chewy</item>
     </array>
 </resources>

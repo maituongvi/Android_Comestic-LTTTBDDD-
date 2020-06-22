@@ -21,17 +21,10 @@ public class ImageAdapter extends PagerAdapter {
     }
 
     private int[] sliderImageId = new int[]{
-<<<<<<< Updated upstream
-            com.example.comestic.R.drawable.image2,
-            com.example.comestic.R.drawable.image1,
-            com.example.comestic.R.drawable.image4,
-            com.example.comestic.R.drawable.image3,
-=======
             com.example.comestic.R.drawable.v2,
             com.example.comestic.R.drawable.v3,
             com.example.comestic.R.drawable.v4,
             com.example.comestic.R.drawable.v5,
->>>>>>> Stashed changes
     };
 
     @Override

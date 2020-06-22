@@ -9,6 +9,7 @@
     android:layout_height="match_parent"
     tools:ignore="MissingConstraints"
     android:fitsSystemWindows="true"
+    tools:openDrawer="start"
 
 
 
@@ -19,8 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_frame">
-<<<<<<< Updated upstream
-=======
 
 
         <ScrollView
@@ -28,16 +27,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"
->>>>>>> Stashed changes
 
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
             <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
             <RelativeLayout
 
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/backround1"
+                android:layout_height="300dp"
+                android:background="@android:color/darker_gray"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.Toolbar
@@ -58,14 +59,13 @@
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="match_parent"
-<<<<<<< Updated upstream
-                    android:layout_height="220dp"
-=======
                     android:layout_height="200dp"
                     android:layout_below="@+id/hinhAnh"
->>>>>>> Stashed changes
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="-1dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="1dp" />
 
 
 
@@ -78,173 +78,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_below="@+id/videoView"
-<<<<<<< Updated upstream
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/border_edittext"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:id="@+id/cardView_sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="10dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/item_make_up"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/border_edittext"
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp" />
-
-                        <Button
-                            android:id="@+id/btnMakeUp"
-                            android:layout_width="95dp"
-                            android:layout_height="90dp"
-                            android:background="@drawable/unnamed"
-                            android:foreground="@drawable/iconmakup2" />
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_centerHorizontal="true"
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="30dp"
-                            app:cardElevation="0dp">
-
-                            <Button
-                                android:id="@+id/btnHerbal"
-                                android:layout_width="95dp"
-                                android:layout_height="90dp"
-                                android:background="@drawable/unnamed"
-                                android:foreground="@drawable/herbalcon" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_alignParentRight="true"
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp">
-
-                            <Button
-                                android:id="@+id/btnPerfume"
-                                android:layout_width="95dp"
-                                android:layout_height="90dp"
-                                android:background="@drawable/unnamed"
-                                android:foreground="@drawable/perfume" />
-                        </androidx.cardview.widget.CardView>
-
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/cardView_sp1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="10dp"
-                        tools:ignore="UselessParent">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_alignParentLeft="true"
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp">
-
-                            <Button
-                                android:id="@+id/btnSkinCare"
-                                android:layout_width="95dp"
-                                android:layout_height="90dp"
-                                android:background="@drawable/unnamed"
-                                android:foreground="@drawable/iconskincare" />
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_centerHorizontal="true"
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp">
-
-                            <Button
-                                android:id="@+id/btnOil"
-                                android:layout_width="95dp"
-                                android:layout_height="90dp"
-                                android:background="@drawable/unnamed"
-                                android:foreground="@drawable/iconoil" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_alignParentRight="true"
-
-                            app:cardBackgroundColor="?attr/colorControlHighlight"
-                            app:cardCornerRadius="20dp"
-                            app:cardElevation="0dp">
-
-                            <Button
-                                android:id="@+id/btnComesticDevide"
-                                android:layout_width="95dp"
-                                android:layout_height="90dp"
-                                android:background="@drawable/unnamed"
-                                android:foreground="@drawable/salondevide" />
-                        </androidx.cardview.widget.CardView>
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="239dp"
-                    android:layout_below="@+id/content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </RelativeLayout>
-
-    </FrameLayout>
-
-    <RelativeLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:gravity="bottom"
-        android:translationY="8dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/main_nav"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            app:itemBackground="@color/colorPrimaryDark"
-            app:itemHorizontalTranslationEnabled="true"
-            app:labelVisibilityMode="unlabeled"
-            app:itemIconTint="@color/nav_items"
-            app:itemTextColor="@color/nav_items"
-            app:menu="@menu/navbottom_items" />
-    </RelativeLayout>
-=======
                     android:background="#000000"/>
 
 
@@ -307,5 +140,12 @@
 <!--            app:menu="@menu/navbottom_items"-->
 <!--            />-->
 <!--    </RelativeLayout>-->
->>>>>>> Stashed changes
+    <!--//Không sử dụng chỉ để lấy thông tin -->
+    <TextView
+        android:id="@+id/maKH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="maKH">
+
+    </TextView>
 </androidx.drawerlayout.widget.DrawerLayout>

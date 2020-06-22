@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailID, passWord;
     Button btnSignIn;
     TextView tvSignUp;
+    TextView forgotPass;
+    private Button  btnBack;
 
     public static String email;
     @Override
@@ -31,14 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_signin);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
         emailID =findViewById(R.id.edittext_username);
         passWord = findViewById(R.id.edittext_password);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
         tvSignUp  = findViewById(R.id.sign_up);
+        forgotPass =findViewById(R.id.forgot_pass);
+        btnBack = findViewById(R.id.btnBack);
 
         mAuth =FirebaseAuth.getInstance();
 
@@ -70,9 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else {
                                 Toast.makeText(LoginActivity.this,"Login Successful!!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                              Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 MainActivity.email =email;
-//                                intent.putExtra("email",email);
+                                finish();
+                                intent.putExtra("email",email);
                                 startActivity(intent);
                             }
                         }
@@ -91,6 +92,21 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
 
                 startActivity(intent);
+            }
+        });
+
+        forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassActivity.class);
+                startActivity(intent);
+            }
+        });
+
+       btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

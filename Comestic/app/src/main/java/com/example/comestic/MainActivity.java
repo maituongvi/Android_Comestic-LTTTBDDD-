@@ -11,17 +11,13 @@ import androidx.appcompat.widget.Toolbar;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-<<<<<<< Updated upstream
-import android.widget.ScrollView;
-=======
->>>>>>> Stashed changes
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -43,7 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static TextView txtMaKH;
     VideoView mvideoView;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
@@ -51,64 +47,12 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mainNav;
     private FrameLayout mainFrame;
     private static final String TAG ="Main Activity";
-<<<<<<< Updated upstream
-    private Button btnMakeUp;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//
-//        dl = (DrawerLayout)findViewById(R.id.activity_main);
-//        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
-//
-//        dl.addDrawerListener(t);
-//        t.syncState();
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().hide();
-
-
-//        nv = (NavigationView)findViewById(R.id.nv);
-//        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                int id = item.getItemId();
-//                switch(id)
-//                {
-//                    case R.id.trangchu:
-//
-//                        Intent intents = new Intent(MainActivity.this,MainActivity.class);
-//                        startActivity(intents);
-//                        break;
-//                    case R.id.taikhoan:
-//                        Log.e(TAG, "ERROR");
-//                        Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
-//                        startActivity(intent4);
-//                        break;
-//                    case R.id.giohang:
-//                        Intent intent1= new Intent(MainActivity.this,OrderActivity.class);
-//                        startActivity(intent1);break;
-//                    case R.id.dangxuat:
-//                        Toast.makeText(MainActivity.this, "Đăng xuất", Toast.LENGTH_SHORT).show();break;
-//                    default:
-//                        return true;
-//                }
-//                return true;
-//            }
-//        });
-
-
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        ImageAdapter adapter = new ImageAdapter(this);
-        mViewPager.setAdapter(adapter);
-=======
     private static ArrayList<LoaiSanPham> listLoaiSP;
     private RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     private CategoryAdapter categoryAdapter;
     private Toolbar toolbar ;
+    TextView tenKH, emailKH;
     public static String email ;
     TextView ten_nav , email_nav;
     @Override
@@ -129,17 +73,61 @@ public class MainActivity extends AppCompatActivity {
         dl.addDrawerListener(t);
         t.syncState();
 
->>>>>>> Stashed changes
+        NavigationView navView = (NavigationView) findViewById(R.id.nv);
+        View headerview = navView.getHeaderView(0);
 
-        btnMakeUp =(Button) findViewById(R.id.btnMakeUp);
 
-<<<<<<< Updated upstream
-        btnMakeUp.setOnClickListener(new View.OnClickListener() {
+
+        ///nav_header
+        headerview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this,ComesticsProduct.class);
-                startActivity(intent);
-=======
+
+                if(email ==null){
+                    Intent intent4 = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent4);
+                }
+                else{
+
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+                    mDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren() ){
+                                User p = dataSnapshot1.getValue(User.class);
+                                if(p.getEmail().equals(email)){
+                                    Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
+                                    intent4.putExtra("user",p);
+                                    startActivity(intent4);
+                                    break;
+
+
+                                }
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(MainActivity.this,"Something is wrong!!!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+//                Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+//                startActivity(intent);
+            }
+        });
+
+        tenKH = (TextView)headerview.findViewById(R.id.ten_nav);
+        emailKH = (TextView) headerview.findViewById(R.id.email_nav);
+
+
+        setNavHeader();
+
+
+        getMaKH(email);
+
+
+
 
         // RecyclerView
         listLoaiSP = new ArrayList<>();
@@ -167,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Something is wrong!!!",Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
         nv = (NavigationView)findViewById(R.id.nv);
         nv.bringToFront();
@@ -223,37 +213,53 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent1);
                             break;
                         }
+                    case R.id.donhang: {
+
+                        Intent intent = new Intent(MainActivity.this, DonHangCuaToiAcitvity.class);
+                        startActivity(intent);
+                        break;
+                    }
+
                     case R.id.khuyenmai:
                         Intent intent2 = new Intent(MainActivity.this,PromotionActivity.class);
                         startActivity(intent2);
                         break;
                     case R.id.dangxuat:
                         email =null;
+                        GioHangActivity.listSpOrders.clear();
+                        tenKH.setText("@string/nav_header_title");
+                        emailKH.setText("@string/nav_header_subtitle");
                         Toast.makeText(MainActivity.this, "Đăng xuất", Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
                 }
                 return true;
->>>>>>> Stashed changes
             }
         });
+
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        ImageAdapter adapter = new ImageAdapter(this);
+        mViewPager.setAdapter(adapter);
 
         //load video
         mvideoView = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.nuochoagooggirl );
         try {
             mvideoView.setVideoURI(uri);
+
+            mvideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                }
+            });
         } catch (NullPointerException techmaster1)
         {
             System.out.println("Couldn't load video" + techmaster1);
         }
         mvideoView.start();
 
-        //bottom navigation
 
-//        mainNav = (BottomNavigationView) findViewById(R.id.pro_nav);
-//        mainNav.setOnNavigationItemSelectedListener(navListener);
-        //mainNav.clearFocus();
 
     }
 
@@ -265,111 +271,29 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-<<<<<<< Updated upstream
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            // Fragment selectedFragment = null;
+    public void setNavHeader(){
+        if(email != null){
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren() ){
+                        User p = dataSnapshot1.getValue(User.class);
+                        if(p.getEmail().equals(email)){
+                            tenKH.setText(p.getTen());
+                            emailKH.setText(p.getEmail());
 
-            switch (menuItem.getItemId()){
-=======
-//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//            // Fragment selectedFragment = null;
-//
-//            switch (menuItem.getItemId()){
->>>>>>> Stashed changes
-//                case R.id.nav_home:
-//                    Intent intents = new Intent(MainActivity.this,MainActivity.class);
-//                    startActivity(intents);
-//                    break;
-<<<<<<< Updated upstream
-                case R.id.nav_cart:
-                    Intent intent= new Intent(MainActivity.this,OrderActivity.class);
-                    startActivity(intent);
-                    break;
-                case  R.id.nav_search:
-                    Intent intent1 = new Intent(MainActivity.this,SearchActivity.class);
-                    startActivity(intent1);
-                    break;
-                case  R.id.nav_promotion:
-                    Intent intent2 = new Intent(MainActivity.this,PromotionActivity.class);
-                    startActivity(intent2);
-                    break;
-                case R.id.nav_account:
-                    Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
-                    startActivity(intent4);
-            }
-            //getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, selectedFragment).commit();
-
-            return true;
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this,"Something is wrong!!!",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
-    };
-=======
-//                case R.id.nav_cart:
-//                    Intent intent= new Intent(MainActivity.this,GioHangActivity.class);
-//                    startActivity(intent);
-//                    break;
-//                case  R.id.nav_search:
-//                    Intent intent1 = new Intent(MainActivity.this,MainActivity.class);
-//                    startActivity(intent1);
-//                    break;
-//                case  R.id.nav_promotion:
-//                    Intent intent2 = new Intent(MainActivity.this,PromotionActivity.class);
-//                    startActivity(intent2);
-//                    break;
-//                case R.id.nav_account:
-//                    if(email ==null){
-//                        Intent intent4 = new Intent(MainActivity.this,LoginActivity.class);
-//                        startActivity(intent4);
-//                        break;
-//                    }
-//                    else{
-//
-//                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-//                        mDatabase.addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren() ){
-//                                    User p = dataSnapshot1.getValue(User.class);
-//                                    if(p.getEmail().equals(email)){
-//                                        Intent intent4 = new Intent(MainActivity.this,AccountActivity.class);
-//                                        intent4.putExtra("user",p);
-//                                        startActivity(intent4);
-//                                        break;
-//
-//
-//                                    }
-//                                }
-//                            }
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                                Toast.makeText(MainActivity.this,"Something is wrong!!!",Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                        break;
-//                    }
-//            }
-//            //getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, selectedFragment).commit();
-//
-//            return true;
-//        }
-//    };
->>>>>>> Stashed changes
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        Log.e(TAG,"On Start");
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        Log.e(TAG, "On Resume");
-//    }
+    }
+
 
 
     @Override
@@ -378,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intents = new Intent(MainActivity.this,MainActivity.class);
 //        startActivity(intents);
         //setContentView(R.layout.activity_main);
-        mvideoView = (VideoView) findViewById(R.id.videoView);
+//        mvideoView = (VideoView) findViewById(R.id.videoView);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.nuochoagooggirl );
         try {
             mvideoView.setVideoURI(uri);
@@ -388,8 +312,35 @@ public class MainActivity extends AppCompatActivity {
         }
         mvideoView.start();
 
+        setNavHeader();
+
+
+
+
     }
 
+    private void getMaKH(final String email) {
+        txtMaKH = findViewById(R.id.maKH);
+        txtMaKH.setVisibility(View.GONE);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    User p = dataSnapshot1.getValue(User.class);
+                    if (p.getEmail().equals(email)) {
+                        txtMaKH.setText(dataSnapshot1.getKey());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Something is wrong!!!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
+    }
 }

@@ -27,13 +27,9 @@ public class OrderActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
-
-
-
         orderNav = (BottomNavigationView) findViewById(R.id.order_nav);
         orderNav.setOnNavigationItemSelectedListener(navListener);
         // orderNav.clearFocus();
-
 
     }
 
